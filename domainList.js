@@ -32,8 +32,7 @@ function clearInput() {
 
 function paintList() {
     chrome.storage.sync.get('redirectDomains', (result) => {
-        redirectDomains = result.redirectDomains.some(item => true) || ['example.com'];
-        redirectDomains.forEach((domain) => {
+        result.redirectDomains.forEach((domain) => {
             const li = document.createElement('li');
             li.textContent = domain;
             ul.appendChild(li);
@@ -53,10 +52,19 @@ function delData(event) {
     redirectDomains.splice(redirectDomains.indexOf(event.target.textContent), 1);
 }
 
+function isDuplicate(value, array) {
+    return array.includes(value);
+  }
+
+saveData()
 paintList()
 
 form.addEventListener('submit', (event) => {
     event.preventDefault();
+    if(isDuplicate(urlInput.value, redirectDomains)) {
+        alert("중복된 도메인 입니다.")
+        return
+    }
     if(!isValidDomain(urlInput.value)) {
         clearInput();
         alert("올바른 도메인을 입력해주세요");
