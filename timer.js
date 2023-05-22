@@ -3,6 +3,11 @@ let timerInterval;
 
 function startTimer() {
   startBtn.innerText = "Stop"
+  chrome.storage.sync.get('startDate', (result) => {
+    if(result.startDate !== new Date().getDate()) {
+      chrome.storage.sync.set({ 'sumTime' : 0 })
+    }
+  })
   // 스토리지에 데이터 저장
   chrome.storage.sync.set({ 'startTime' : new Date().getTime() });
   chrome.storage.sync.set({ 'startDate' : new Date().getDate() });

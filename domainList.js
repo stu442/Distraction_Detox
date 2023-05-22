@@ -1,8 +1,7 @@
 const form = document.querySelector('#url_form');
 const urlInput = document.querySelector("#url_input");
 const ul = document.querySelector("ul");
-const li = document.getElementsByTagName('li')
-
+const li = document.getElementsByTagName('li');
 
 function createList() {
     const li = document.createElement("li");
@@ -16,8 +15,7 @@ function updateDomain() {
 }
 
 function saveData() {
-    chrome.storage.sync.set({redirectDomains : redirectDomains}, () => {
-    })
+    chrome.storage.sync.set({'redirectDomains' : redirectDomains})
 }
 
 function isValidDomain(domain) {
@@ -29,6 +27,19 @@ function isValidDomain(domain) {
 function clearInput() {
     urlInput.value="";
 }
+
+function loadRedirectDomains() {
+    return new Promise((resolve) => {
+      chrome.storage.sync.get('redirectDomains', (result) => {
+        if (result.redirectDomains && result.redirectDomains.length > 0) {
+          redirectDomains = result.redirectDomains;
+        } else {
+          redirectDomains = ['example.com'];
+        }
+        resolve();
+      });
+    });
+  }
 
 function paintList() {
     chrome.storage.sync.get('redirectDomains', (result) => {
@@ -56,8 +67,11 @@ function isDuplicate(value, array) {
     return array.includes(value);
   }
 
-saveData()
-paintList()
+  async function init() {
+    await loadRedirectDomains();
+    paintList();
+    saveData();
+  }
 
 form.addEventListener('submit', (event) => {
     event.preventDefault();
@@ -80,3 +94,5 @@ ul.addEventListener('click', (event) => {
     delData(event);
     saveData();
 })
+
+init();

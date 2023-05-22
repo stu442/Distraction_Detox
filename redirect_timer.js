@@ -1,6 +1,5 @@
 const timeViewer = document.getElementById("focused_time");
 let timeViewerInterval;
-let deleteTimeInterval;
 
 function padNumber(number) {
   return number.toString().padStart(2, '0');
@@ -82,15 +81,4 @@ async function updateTimer() {
   }
 }
 
-async function deleteSumTime() {
-  try {
-    if(await getStartDate() !== new Date().getDate()) {
-      chrome.storage.sync.set({"sumTime" : 0})
-    }
-  } catch (error) {
-    console.error(error)
-  }
-}
-
 timeViewerInterval = setInterval(updateTimer, 1000);
-deleteTimeInterval = setInterval(deleteSumTime, 60000);

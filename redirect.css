@@ -1,0 +1,4 @@
+#onething_text:hover {
+    text-decoration: line-through;
+    cursor: pointer;
+}
