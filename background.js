@@ -1,5 +1,4 @@
 let redirectDomains = ['example.com']; // 리다이렉트를 적용할 도메인들
-// let deleteTimeInterval;
 
 chrome.webNavigation.onBeforeNavigate.addListener((details) => {
   chrome.storage.sync.get('isTiming', (result) => {
@@ -16,31 +15,3 @@ chrome.webNavigation.onBeforeNavigate.addListener((details) => {
     }
   });
 });
-
-
-// async function getStartDate() {
-//   return new Promise((resolve, reject) => {
-//     chrome.storage.sync.get('startDate', (result) => {
-//       if (chrome.runtime.lastError) {
-//         reject(chrome.runtime.lastError);
-//       } else {
-//         resolve(result.startDate);
-//       }
-//     });
-//   });
-// }
-
-// async function deleteSumTime() {
-//   try {
-//     if(await getStartDate() !== new Date().getDate()) {
-//       chrome.storage.sync.set({"sumTime" : 0})
-//     }
-//   } catch (error) {
-//     console.error(error)
-//   }
-// }
-
-// deleteTimeInterval = setInterval(deleteSumTime, 60000);
-
-
-// console.log("HI I'm Background");

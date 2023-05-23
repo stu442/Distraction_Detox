@@ -17,7 +17,7 @@ function changeTitle() {
     if(onethingText.innerText !== "") {
         onethingTitle.innerText = "Today's OneThing To Do"
     } else {
-        onethingTitle.innerText = "What's Your OneThing Today?"
+        onethingTitle.innerText = "What's Your OneThing To Do?"
     }
 }
 
@@ -30,7 +30,9 @@ function removeH2() {
 function createTextInput() {
     const inputElement = document.createElement("input");
     inputElement.setAttribute("type", "text");
+    inputElement.setAttribute("autocomplete", "off");
     inputElement.setAttribute("id", "onething_input");
+    inputElement.classList.add("font")
   
     form.appendChild(inputElement);
   }
@@ -65,7 +67,6 @@ onethingText.addEventListener('click', () => {
     removeH2();
     createTextInput();
 })
-
 
 
 init();

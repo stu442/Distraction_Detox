@@ -5,21 +5,28 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="reset.css" />
     <link rel="stylesheet" href="popup.css" />
 </head>
 <body>
-    <h1>Productive Tool For U</h1>
-    <form id="url_form">
-        <input id="url_input" placeholder="도메인을 입력하세요." type="text"></input>
-    </form>
-    <ul>
-    </ul>
+    <div class="timer_container">
+        <div class="font" id="timer">00:00</div>
+        <button class="font btn btn_red" id="start">Start</button>
+    </div>
 
-    <div id="timer">00:00</div>
-    <button id="start">Start</button>
+    <div class="domain_container">
+        <form id="url_form">
+            <input class="font" id="url_input" placeholder="도메인을 입력하세요." type="text"></input>
+        </form>
+        <ul class="list_container">
+        </ul>
+    </div>
     
-    <script src="background.js"></script>
-    <script src="domainList.js"></script>
-    <script src="timer.js"></script>
 </body>
+<script src="background.js"></script>
+<script src="domainList.js"></script>
+<script src="timer.js"></script>
 </html>

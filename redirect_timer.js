@@ -8,7 +8,7 @@ function padNumber(number) {
 function secondsToMinutesAndSeconds(sec) {
   const minutes = Math.floor(sec / 60);
   const remainingSeconds = sec % 60;
-  return `${padNumber(minutes)}분 ${padNumber(remainingSeconds)}초`;
+  return `${padNumber(minutes)}:${padNumber(remainingSeconds)}`;
 }
 
 async function getSumTime() {
@@ -75,7 +75,8 @@ async function updateTimer() {
   try {
     const elapsedTime = await calculateElapsedTime();
     const formattedTime = secondsToMinutesAndSeconds(elapsedTime);
-    timeViewer.innerText = `지금까지 ${formattedTime} 집중 하고 있습니다. 🔥🔥`;
+    timeViewer.classList.remove("loader");
+    timeViewer.innerText = `${formattedTime}`;
   } catch (error) {
     console.error(error);
   }

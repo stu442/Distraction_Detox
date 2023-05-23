@@ -1,6 +1,9 @@
 body {
     width: 400px;
     height: 600px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 li {
@@ -13,3 +16,48 @@ li:hover {
     color: red;
 }
 
+.font {
+    font-family: 'Open Sans', sans-serif;
+}
+
+.timer_container {
+    flex: 4;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#timer {
+    font-size: 5rem;
+}
+
+#start {
+    margin-top: 1.5rem;
+    font-size: 2rem;
+}
+
+.btn {
+    color: #fff;
+    background-color: transparent;
+    border-radius: 3rem;
+    border: 0px solid transparent;
+    padding: 3px 50px;
+    cursor: pointer;
+}
+
+.btn_green {
+    background-color: #04D700;
+}
+
+.btn_red {
+    background-color: #ff4d4d;
+}
+
+.domain_container {
+    flex: 3;
+}
+
+#url_input {
+    
+}
