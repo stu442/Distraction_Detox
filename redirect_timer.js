@@ -6,8 +6,14 @@ function padNumber(number) {
 }
 
 function secondsToMinutesAndSeconds(sec) {
-  const minutes = Math.floor(sec / 60);
+  const hours = Math.floor(sec / 3600);
+  const minutes = Math.floor((sec % 3600)/60);
   const remainingSeconds = sec % 60;
+
+    if(hours > 0) {
+      return `${padNumber(hours)}:${padNumber(minutes)}:${padNumber(remainingSeconds)}`;
+    }
+
   return `${padNumber(minutes)}:${padNumber(remainingSeconds)}`;
 }
 
@@ -82,4 +88,5 @@ async function updateTimer() {
   }
 }
 
+updateTimer()
 timeViewerInterval = setInterval(updateTimer, 1000);

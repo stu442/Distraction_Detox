@@ -14,12 +14,17 @@
 <body>
     <div class="timer_container">
         <div class="font" id="timer">00:00</div>
-        <button class="font btn btn_red" id="start">Start</button>
+        <!-- <button class="font btn btn_green" id="start">Start</button> -->
+        <div class="btn_container">
+            <img src="/img/popup_btn/start_before.svg" class="btn startBefore">
+            <img src="/img/popup_btn/start_after.svg" class="btn disapear startAfter">
+            <p class="img_text font">Start</p>
+        </div>
     </div>
 
     <div class="domain_container">
         <form id="url_form">
-            <input class="font" id="url_input" placeholder="도메인을 입력하세요." type="text"></input>
+            <input class="font" id="url_input" placeholder="도메인을 입력하세요." type="text" autocomplete="off"></input>
         </form>
         <ul class="list_container">
         </ul>

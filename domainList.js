@@ -5,6 +5,7 @@ const li = document.getElementsByTagName('li');
 
 function createList() {
     const li = document.createElement("li");
+    li.classList.add("font");
     li.innerHTML = `<span>${urlInput.value}</span>`
     ul.appendChild(li);
     clearInput();
@@ -45,6 +46,7 @@ function paintList() {
     chrome.storage.sync.get('redirectDomains', (result) => {
         result.redirectDomains.forEach((domain) => {
             const li = document.createElement('li');
+            li.classList.add("font");
             li.textContent = domain;
             ul.appendChild(li);
         })

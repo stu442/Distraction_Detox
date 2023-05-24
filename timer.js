@@ -1,22 +1,26 @@
-const startBtn = document.getElementById('start');
+const imgText = document.querySelector('.img_text');
+const startBefore = document.querySelector('.startBefore');
+const startAfter = document.querySelector('.startAfter')
 let timerInterval;
 
 function startTimer() {
-  startBtn.innerText = "Stop"
+  imgText.innerText = "Stop"
   chrome.storage.sync.get('startDate', (result) => {
     if(result.startDate !== new Date().getDate()) {
       chrome.storage.sync.set({ 'sumTime' : 0 })
     }
   })
   // 스토리지에 데이터 저장
-  chrome.storage.sync.set({ 'startTime' : new Date().getTime() });
-  chrome.storage.sync.set({ 'startDate' : new Date().getDate() });
-  chrome.storage.sync.set({ 'isTiming' : true });
+  chrome.storage.sync.set({
+    'startTime': new Date().getTime(),
+    'startDate': new Date().getDate(),
+    'isTiming': true
+  });
   timerInterval = setInterval(updateTimer, 1000);
 }
 
 function stopTimer() {
-  startBtn.innerText = "Start"
+  imgText.innerText = "Start"
   chrome.storage.sync.set({ 'isTiming' : false });
   sumTime();
   clearInterval(timerInterval);
@@ -24,13 +28,19 @@ function stopTimer() {
 }
 
 function updateTimer() {
-  chrome.storage.sync.get('startTime', (result) => {
-    const seconds = Math.floor((new Date().getTime() - result.startTime)/1000);
-    const minutes = Math.floor(seconds / 60);
+  chrome.storage.sync.get('startTime', ({ startTime }) => {
+    const seconds = Math.floor((new Date().getTime() - startTime) / 1000);
+    const hours = Math.floor(seconds / 3600);
+    const minutes = Math.floor((seconds % 3600) / 60);
     const remainingSeconds = seconds % 60;
-    const formattedTime = `${padNumber(minutes)}:${padNumber(remainingSeconds)}`;
+    let formattedTime;
+    if (hours > 0) {
+      formattedTime = `${padNumber(hours)}:${padNumber(minutes)}:${padNumber(remainingSeconds)}`;
+    } else {
+      formattedTime = `${padNumber(minutes)}:${padNumber(remainingSeconds)}`;
+    }
     document.getElementById('timer').innerText = formattedTime;
-  })
+  });
 }
 
 function padNumber(number) {
@@ -53,20 +63,28 @@ function sumTime() {
   })
 }
 
-startBtn.addEventListener('click', () => {
-  if(startBtn.innerText === "Start") {
+function btnToggle() {
+  startBefore.classList.toggle('disapear');
+  startAfter.classList.toggle('disapear');
+}
+
+imgText.addEventListener('click', () => {
+  if(imgText.innerText === "Start") {
     startTimer();
   } else {
     stopTimer();
   }
 })
 
+imgText.addEventListener('mouseover', btnToggle);
+imgText.addEventListener('mouseout', btnToggle);
+
 if (isPopupOpen()) {
-  chrome.storage.sync.get('isTiming', (result) => {
-    if(result.isTiming) {
-      startBtn.innerText = "Stop"
-      updateTimer()
+  chrome.storage.sync.get('isTiming', ({ isTiming }) => {
+    if (isTiming) {
+      imgText.innerText = "Stop";
+      updateTimer();
       timerInterval = setInterval(updateTimer, 1000);
     }
-  })
+  });
 }
