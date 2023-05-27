@@ -15,9 +15,14 @@ function writeH2() {
 
 function changeTitle() {
     if(onethingText.innerText !== "") {
-        onethingTitle.innerText = "Today's OneThing To Do"
+        let randomNum = Math.ceil(Math.random()*2)
+        if(randomNum % 2 === 0) {
+            onethingTitle.innerText = "오늘 해야할 가장 중요한 일입니다."
+        } else {
+            onethingTitle.innerText = "일은 끝나셨나요?"
+        }
     } else {
-        onethingTitle.innerText = "What's Your OneThing To Do?"
+        onethingTitle.innerText = "오늘 할 가장 중요한 일은 무엇인가요?"
     }
 }
 

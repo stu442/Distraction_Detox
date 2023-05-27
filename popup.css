@@ -108,3 +108,7 @@ ul {
 li {
     margin-top: 0.3rem;
 }
+
+.none {
+    display: none;
+}

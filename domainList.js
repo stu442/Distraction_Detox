@@ -3,16 +3,16 @@ const urlInput = document.querySelector("#url_input");
 const ul = document.querySelector("ul");
 const li = document.getElementsByTagName('li');
 
-function createList() {
+function createList(url) {
     const li = document.createElement("li");
     li.classList.add("font");
-    li.innerHTML = `<span>${urlInput.value}</span>`
+    li.innerHTML = `<span>${url}</span>`
     ul.appendChild(li);
     clearInput();
 }
 
-function updateDomain() {
-    redirectDomains.push(urlInput.value);
+function updateDomain(url) {
+    redirectDomains.push(url);
 }
 
 function saveData() {
@@ -75,18 +75,28 @@ function isDuplicate(value, array) {
     saveData();
   }
 
+  function extractDomain(url) {
+    var domain;
+    // URL에서 도메인 추출 로직을 구현합니다.
+    var match = url.match(/^(?:https?:\/\/)?(?:[^@\n]+@)?(?:www\.)?([^:\/\n]+)/im);
+    if (match !== null && match.length > 1) {
+      domain = match[1];
+    }
+    return domain;
+  }
+
 form.addEventListener('submit', (event) => {
     event.preventDefault();
     if(isDuplicate(urlInput.value, redirectDomains)) {
         alert("중복된 도메인 입니다.")
         return
     }
-    if(!isValidDomain(urlInput.value)) {
+    if(!isValidDomain(extractDomain(urlInput.value))) {
         clearInput();
-        alert("올바른 도메인을 입력해주세요");
+        alert("올바른 도메인을 입력해주세요.\n 예시) example.com, youtube.com");
     } else {
-        updateDomain();
-        createList();
+        updateDomain(extractDomain(urlInput.value));
+        createList(extractDomain(urlInput.value));
         saveData();
     }
 })

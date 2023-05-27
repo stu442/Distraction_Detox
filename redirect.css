@@ -14,8 +14,13 @@ body {
 }
 
 .font {
-    font-family: 'Open Sans', sans-serif;
+  font-family: 'IBM Plex Sans KR', sans-serif;
     color: #fff;
+}
+
+.font_time {
+  font-family: 'Nanum Gothic', sans-serif;
+  color: #fff;
 }
 
 h1 {
@@ -111,4 +116,8 @@ h2 {
   40% {
     box-shadow: 0 2.5em 0 0;
   }
+}
+
+#focused_time {
+  margin-top: 0.8rem;
 }

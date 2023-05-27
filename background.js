@@ -22,7 +22,7 @@ chrome.tabs.onUpdated.addListener((tabId) => {
         if (result.isTiming) {
           chrome.storage.sync.get('redirectDomains', (result) => {
             result.redirectDomains.forEach(domain => {
-              if (dos.includes(domain)) {
+              if (domain.includes(dos)) {
                 const redirectUrl = chrome.runtime.getURL('redirect.html');
                 chrome.tabs.update(tabId, { url: redirectUrl }); // 리다이렉트될 URL
               }

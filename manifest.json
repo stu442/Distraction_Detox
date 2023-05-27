@@ -1,11 +1,11 @@
 {
   "manifest_version": 3,
   "name": "Distraction Detox",
-  "version": "0.0.1",
+  "version": "0.1.1",
   "permissions": [
-    "webNavigation",
     "storage",
-    "tabs"
+    "tabs",
+    "activeTab"
   ],
   "icons": {
     "128":"128.png"
@@ -13,15 +13,6 @@
   "background": {
     "service_worker": "background.js"
   },
-  "host_permissions": [
-    "*://*/*"
-  ],
-  "web_accessible_resources": [
-    {
-      "resources": ["redirect.html"],
-      "matches": ["<all_urls>"]
-    }
-  ],
   "action": {
     "default_icon": "32.png",
     "default_title": "This is Your Tools",
