@@ -24,18 +24,15 @@
 
 << 시작 페이지 >>
 
-<img width="394" alt="스크린샷 2023-11-11 오후 5 42 31" src="https://github.com/stu442/Distraction_Detox/assets/104495388/f655e4ed-1286-4974-a50f-76f9f94f47b8">
+<p align="center"><img width="394" alt="스크린샷 2023-11-11 오후 5 42 31" src="https://github.com/stu442/Distraction_Detox/assets/104495388/f655e4ed-1286-4974-a50f-76f9f94f47b8"></p>
 
 <<리다이렉트 페이지>>
 
-![제목을-입력해주세요_-001 (1)](https://github.com/stu442/Distraction_Detox/assets/104495388/02cdea65-e3ca-4802-8d64-d538d026b0a5)
-
-
-![제목을-입력해주세요_-001 (1)](https://github.com/stu442/Distraction_Detox/assets/104495388/02cdea65-e3ca-4802-8d64-d538d026b0a5)
+<p align="center"><img src="https://github.com/stu442/Distraction_Detox/assets/104495388/02cdea65-e3ca-4802-8d64-d538d026b0a5"></p>
 
 
 
 ## 기술 스택
 
- <img src="https://img.shields.io/badge/html5-E34F26?style=for-the-badge&logo=html5&logoColor=black"> <img src="https://img.shields.io/badge/css3-1572B6?style=for-the-badge&logo=css3&logoColor=black"> <img src="https://img.shields.io/badge/javascript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black">
+<img src="https://img.shields.io/badge/html5-E34F26?style=for-the-badge&logo=html5&logoColor=black"> <img src="https://img.shields.io/badge/css3-1572B6?style=for-the-badge&logo=css3&logoColor=black"> <img src="https://img.shields.io/badge/javascript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black">
 
