@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "Distraction Detox",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "permissions": [
     "storage",
     "tabs",
@@ -17,5 +17,6 @@
     "default_icon": "32.png",
     "default_title": "This is Your Tools",
     "default_popup": "popup.html"
-  }
+  },
+  "default_locale": "en"
 }

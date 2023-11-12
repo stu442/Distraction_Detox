@@ -1,0 +1,11 @@
+{
+    "input_placeholder" : {
+        "message" : "Enter Domain"
+    },
+    "today_focustime" : {
+        "message" : "Today's Focus Time"
+    },
+    "onething_title" : {
+        "message" : "What's the most important thing today?"
+    }
+}

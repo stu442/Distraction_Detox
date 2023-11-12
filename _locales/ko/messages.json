@@ -1,0 +1,11 @@
+{
+    "input_placeholder" : {
+        "message" : "도메인을 입력하세요"
+    },
+    "today_focustime" : {
+        "message" : "오늘 집중한 시간"
+    },
+    "onething_title" : {
+        "message" : "오늘 할 가장 중요한 일은 무엇인가요?"
+    }
+}
