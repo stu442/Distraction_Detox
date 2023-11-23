@@ -14,15 +14,13 @@ chrome.tabs.onUpdated.addListener((tabId) => {
   chrome.tabs.query({ active: true, currentWindow: true }, function(tabs) {
     if (tabs.length > 0) {
       var url = tabs[0].url;
-      var dos = extractDomain(url);
-  
-      console.log("Current domain: " + dos);
+      var currentDomain = extractDomain(url);
   
       chrome.storage.sync.get('isTiming', (result) => {
         if (result.isTiming) {
           chrome.storage.sync.get('redirectDomains', (result) => {
-            result.redirectDomains.forEach(domain => {
-              if (domain.includes(dos)) {
+            result.redirectDomains.forEach(storagedDomains => {
+              if (storagedDomains === currentDomain) {
                 const redirectUrl = chrome.runtime.getURL('redirect.html');
                 chrome.tabs.update(tabId, { url: redirectUrl }); // 리다이렉트될 URL
               }

@@ -44,12 +44,14 @@ function loadRedirectDomains() {
 
 function paintList() {
     chrome.storage.sync.get('redirectDomains', (result) => {
+      if(result.redirectDomains) {
         result.redirectDomains.forEach((domain) => {
-            const li = document.createElement('li');
-            li.classList.add("font");
-            li.textContent = domain;
-            ul.appendChild(li);
-        })
+          const li = document.createElement('li');
+          li.classList.add("font");
+          li.textContent = domain;
+          ul.appendChild(li);
+      })
+      }
     })
 }
 
